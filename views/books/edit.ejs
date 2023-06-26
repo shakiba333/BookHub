@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+    <div>
+        <form action="/books/<%= book.id %>?_method=PUT" method="POST">
+            <label for="title">Title:<input type="text" name="title" value="<%= book.title %>"></label><br>
+            <label for="author">Author:<input type="text" name="author" value="<%= book.author %>"></label><br>
+            <label for="publishDate">Publish Date:<input type="date" name="publishDate"
+                    value="<%= book.publishDate %>"></label><br>
+            <label for="publisher">Publisher:<input type="text" name="publisher"
+                    value="<%= book.publisher %>"></label><br>
+            <label for="ISBN">ISBN:<input type="number" name="ISBN" value="<%= book.ISBN %>"></label><br>
+            <label for="language">Language:<input type="text" name="language" value="<%= book.language %>"></label><br>
+            <button type="submit">Submit</button>
+        </form>
+        <p>
+            <%= errorMsg %>
+        </p>
+    </div>
+
+    <%- include('../partials/footer') %>

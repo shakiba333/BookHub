@@ -7,6 +7,12 @@
                 <h2>By</h2>
                 <%= b.author %>
                     <a href="/books/<%= b.id%>">more details</a>
+                    <a href="/books/edit/<%=b.id%>">Edit</a>
+                    <form action="/books/<%=b.id%>?_method=DELETE" method="post"><button type="submit">Delete</button>
+                    </form>
         </div>
         <% }) %>
+            <p>
+                <%= errorMsg %>
+            </p>
             <%- include('../partials/footer') %>
