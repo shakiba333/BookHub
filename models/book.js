@@ -5,9 +5,10 @@ const Schema = mongoose.Schema;
 const bookSchema = new mongoose.Schema({
     title: String,
     author: String,
+    bookImage: String,
     publishDate: Date,
     publisher: String,
-    ISBN: Number,
+    pages: Number,
     language: String
 }, {
     timestamps: true

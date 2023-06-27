@@ -1,6 +1,7 @@
 <%- include('../partials/header') %>
-    <div>
+    <div class="container">
         <form action="/books/<%= book.id %>?_method=PUT" method="POST">
+            <img src="<%= book.bookImage %>" alt=""><br>
             <label for="title">Title:<input type="text" name="title" value="<%= book.title %>"></label><br>
             <label for="author">Author:<input type="text" name="author" value="<%= book.author %>"></label><br>
             <label for="publishDate">Publish Date:<input type="date" name="publishDate"

@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-    <div>
+    <div class="container">
         <form action="/books" method="POST">
             <label for="title">Title:<input type="text" name="title"></label><br>
             <label for="author">Author:<input type="text" name="author"></label><br>
@@ -7,6 +7,8 @@
             <label for="publisher">Publisher:<input type="text" name="publisher"></label><br>
             <label for="ISBN">ISBN:<input type="number" name="ISBN"></label><br>
             <label for="language">Language:<input type="text" name="language"></label><br>
+            <label for="language">Book Image:<input type="text" name="bookImage"
+                    placeholder="paste the url"></label><br>
             <button type="submit">Submit</button>
         </form>
         <p>

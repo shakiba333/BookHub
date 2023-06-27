@@ -1,5 +1,6 @@
 <%- include('../partials/header') %>
-    <div>
+    <div class="container">
+        <img src="<%=book.bookImage%>" alt="">
         <h1>Title:</h1>
         <%= book.title %>
             <h2>Author:</h2>
@@ -12,6 +13,8 @@
                         <%= book.ISBN %>
                             <h2>Language:</h2>
                             <%= book.language %>
+
+
     </div>
     <p>
         <%= errorMsg %>

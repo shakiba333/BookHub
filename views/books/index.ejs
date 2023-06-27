@@ -1,15 +1,24 @@
 <%- include('../partials/header') %>
 
     <% books.forEach(function(b){ %>
-        <div>
-            <h1>Title:</h1>
-            <%= b.title %>
-                <h2>By</h2>
-                <%= b.author %>
-                    <a href="/books/<%= b.id%>">more details</a>
+        <div class="book-items">
+            <div class="column">
+                <img class="pic" src="<%= b.bookImage %>" alt="">
+                <br>
+                <p>
+                    <%= b.title %>
+                </p>
+                <p>By <%= b.author %>
+                </p>
+                <a href="/books/<%= b.id%>"> >> more </a>
+                <div class="oneLine">
                     <a href="/books/edit/<%=b.id%>">Edit</a>
                     <form action="/books/<%=b.id%>?_method=DELETE" method="post"><button type="submit">Delete</button>
                     </form>
+                </div>
+
+            </div>
+
         </div>
         <% }) %>
             <p>

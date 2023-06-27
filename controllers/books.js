@@ -27,6 +27,7 @@ async function index(req, res) {
             books,
             errorMsg: ''
         })
+
     } catch (err) {
         res.render(`/books/index`, { errorMsg: err.message });
     }
