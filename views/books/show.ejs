@@ -5,18 +5,56 @@
         <%= book.title %>
             <h2>Author:</h2>
             <%= book.author %>
-                <h2>Publish Date:</h2>
-                <%= book.publishDate %>
-                    <h2>Publisher:</h2>
-                    <%= book.publisher %>
-                        <h2>ISBN:</h2>
-                        <%= book.ISBN %>
-                            <h2>Language:</h2>
-                            <%= book.language %>
+                <h2>Summary:</h2>
+                <%= book.description %>
+                    <h2>Publish Date:</h2>
+                    <%= book.publishDate %>
+                        <h2>Publisher:</h2>
+                        <%= book.publisher %>
+                            <h2>Pages:</h2>
+                            <%= book.pages %>
+                                <h2>Language:</h2>
+                                <%= book.language %>
 
 
     </div>
     <p>
         <%= errorMsg %>
     </p>
-    <%- include('../partials/footer') %>
+
+    <div>
+        <h2>Reviews:</h2><br>
+        <form action="/books/<%= book.id %>/reviews" method="POST">
+            <textarea name="content" placeholder="your review"></textarea><br>
+            <label>Rating:</label>
+            <select name="rating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select><br>
+            <button>Add Review</button>
+        </form>
+    </div>
+
+    <% if(book.reviews.length){ %>
+        <% book.reviews.forEach(function(b){ %>
+            <h3>Review</h3>
+            <p>
+                <%= b.content %>
+            </p><br>
+            <h3>Date</h3>
+            <p>
+                <%= b.createdAt.toLocaleDateString() %>
+            </p><br>
+            <h3>Rating</h3>
+            <p>
+                <%= b.rating %>
+            </p>
+
+            <% }); %>
+                <% } else { %>
+                    <h5>No Reviews yet!</h5>
+                    <% } %>
+                        <%- include('../partials/footer') %>
