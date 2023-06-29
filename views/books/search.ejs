@@ -1,14 +1,17 @@
 <%- include('../partials/header') %>
-    <!-- <h1>Search Results for "<%= query %>"</h1>
+    <% if(results !="" ){ %>
+        <div>
+            <% results.forEach(result=> { %>
+                <h3>
+                    <%= result.title %>
+                </h3>
+                <h3>
+                    <%= result.author %>
+                </h3>
+                <% }); %>
+                    <% } else { %>
+                        <h3>No Search results found!</h3>
+                        <% } %>
+        </div>
 
-    <ul>
-        <% results.forEach(result=> { %>
-            <li>
-                <%= result.title %>
-            </li>
-            <li>
-                <%= result.author %>
-            </li>
-            <% }); %>
-    </ul> -->
-    <%- include('../partials/footer') %>
+        <%- include('../partials/footer') %>

@@ -6,7 +6,8 @@ module.exports = {
     show,
     edit,
     update,
-    delete: deleteBook
+    delete: deleteBook,
+    search
 };
 function newBook(req, res) {
     res.render('books/new', { errorMsg: '' });
@@ -22,6 +23,7 @@ async function create(req, res) {
 }
 async function index(req, res) {
     try {
+
         const books = await Book.find({});
         res.render('books/index', {
             books,
@@ -72,6 +74,31 @@ async function deleteBook(req, res) {
         res.redirect('/books')
     } catch (err) {
         res.render('/books', { errorMsg: err.message });
+
+    }
+}
+
+async function search(req, res) {
+
+    try {
+        let searchQuery = req.body.query;
+        if (!searchQuery) {
+            res.render('books/search', { results: [] });
+            return;
+        }
+
+        const results = await Book.find({
+            $or: [
+                { title: { $regex: new RegExp(searchQuery, "i") } },
+                { author: { $regex: new RegExp(searchQuery, "i") } }
+            ]
+        }
+        )
+        console.log('Search results:', searchQuery);
+        res.render('books/search', { results });
+
+    } catch (err) {
+        console.log(err)
 
     }
 }

@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
     <div class="container">
-        <img src="<%=book.bookImage%>" alt="">
+        <img class="pic" src="<%=book.bookImage%>" alt="">
         <h1>Title:</h1>
         <%= book.title %>
             <h2>Author:</h2>
@@ -15,8 +15,6 @@
                             <%= book.pages %>
                                 <h2>Language:</h2>
                                 <%= book.language %>
-
-
     </div>
     <p>
         <%= errorMsg %>
@@ -57,4 +55,6 @@
                 <% } else { %>
                     <h5>No Reviews yet!</h5>
                     <% } %>
+                        <div>
+                        </div>
                         <%- include('../partials/footer') %>

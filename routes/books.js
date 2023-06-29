@@ -3,6 +3,7 @@ var router = express.Router();
 
 const booksCtrl = require('../controllers/books');
 router.get('/new', booksCtrl.new);
+router.post('/search', booksCtrl.search);
 router.get('/', booksCtrl.index);
 router.get('/:id', booksCtrl.show);
 router.get('/edit/:id', booksCtrl.edit);
