@@ -10,11 +10,6 @@
                 <p>By <%= b.author %>
                 </p>
                 <a href="/books/<%= b.id%>"> >> details</a>
-                <div class="oneLine">
-                    <a href="/books/edit/<%=b.id%>">Edit</a>
-                    <form action="/books/<%=b.id%>?_method=DELETE" method="post"><button type="submit">Delete</button>
-                    </form>
-                </div>
 
             </div>
 

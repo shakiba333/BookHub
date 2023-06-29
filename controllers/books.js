@@ -7,7 +7,7 @@ module.exports = {
     edit,
     update,
     delete: deleteBook,
-    search
+    search, admin
 };
 function newBook(req, res) {
     res.render('books/new', { errorMsg: '' });
@@ -32,6 +32,19 @@ async function index(req, res) {
 
     } catch (err) {
         res.render(`/books/index`, { errorMsg: err.message });
+    }
+}
+async function admin(req, res) {
+    try {
+
+        const books = await Book.find({});
+        res.render('books/admin', {
+            books,
+            errorMsg: ''
+        })
+
+    } catch (err) {
+        res.render(`/books/admin`, { errorMsg: err.message });
     }
 }
 async function show(req, res) {
@@ -71,7 +84,7 @@ async function update(req, res) {
 async function deleteBook(req, res) {
     try {
         await Book.findByIdAndRemove(req.params.id);
-        res.redirect('/books')
+        res.redirect('/books/admin')
     } catch (err) {
         res.render('/books', { errorMsg: err.message });
 

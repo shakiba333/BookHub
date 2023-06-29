@@ -22,23 +22,28 @@
 
     <div>
         <h2>Reviews:</h2><br>
-        <form action="/books/<%= book.id %>/reviews" method="POST">
-            <textarea name="content" placeholder="your review"></textarea><br>
-            <label>Rating:</label>
-            <select name="rating">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select><br>
-            <button>Add Review</button>
-        </form>
+        <% if (user) { %>
+            <form action="/books/<%= book.id %>/reviews" method="POST">
+                <textarea name="content" placeholder="your review"></textarea><br>
+                <label>Rating:</label>
+                <select name="rating">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select><br>
+                <button>Add Review</button>
+            </form>
+            <% } %>
     </div>
 
     <% if(book.reviews.length){ %>
         <% book.reviews.forEach(function(b){ %>
             <h3>Review</h3>
+            <p class="review-user"><img alt="avatar" src="<%= b.userAvatar %>" referrerpolicy="no-referrer">
+                <%= b.userName %>
+            </p>
             <p>
                 <%= b.content %>
             </p><br>
@@ -50,7 +55,13 @@
             <p>
                 <%= b.rating %>
             </p>
-
+            <p>
+                <% if (user?._id.equals(b.user)) { %>
+                    <form action="/reviews/<%= b._id %>?_method=DELETE" method="POST">
+                        <button type="submit">X</button>
+                    </form>
+                    <% } %>
+            </p>
             <% }); %>
                 <% } else { %>
                     <h5>No Reviews yet!</h5>

@@ -9,20 +9,27 @@ const reviewSchema = new Schema({
         min: 1,
         max: 5,
         default: 5
-    }
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    userName: String,
+    userAvatar: String
 }, {
     timestamps: true
 })
 
 const bookSchema = new mongoose.Schema({
-    title: String,
-    author: String,
-    bookImage: String,
-    description: String,
-    publishDate: Date,
-    publisher: String,
-    pages: Number,
-    language: String,
+    title: { type: String, required: true },
+    author: { type: String, required: true },
+    bookImage: { type: String, required: true },
+    description: { type: String, required: true },
+    publishDate: { type: Date, required: true },
+    publisher: { type: String, required: true },
+    pages: { type: Number, required: true },
+    language: { type: String, required: true },
     reviews: [reviewSchema]
 }, {
     timestamps: true
