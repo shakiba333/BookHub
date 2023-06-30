@@ -1,21 +1,24 @@
 <%- include('../partials/header') %>
-    <% books.forEach(function(b){ %>
-        <div class="book-items">
-            <div class="column">
-                <img class="pic" src="<%= b.bookImage %>" alt="">
-                <br>
-                <p>
-                    <%= b.title %>
-                </p>
-                <p>By <%= b.author %>
-                </p>
-                <a href="/books/<%= b.id%>"> >> details</a>
+    <div class="mainContainer">
+        <% books.forEach(function(b){ %>
+            <div class="book-items">
+                <div class="column">
+                    <img class="pic" src="<%= b.bookImage %>" alt="">
+                    <br>
+                    <p>
+                        <%= b.title %>
+                    </p>
+                    <p>by <%= b.author %>
+                    </p>
+                    <a href="/books/<%= b.id%>"> >> details</a>
+
+                </div>
 
             </div>
+            <% }) %>
+                <p>
+                    <%= errorMsg %>
+                </p>
+    </div>
 
-        </div>
-        <% }) %>
-            <p>
-                <%= errorMsg %>
-            </p>
-            <%- include('../partials/footer') %>
+    <%- include('../partials/footer') %>

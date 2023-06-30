@@ -1,21 +1,41 @@
 <%- include('../partials/header') %>
-    <div class="container">
-        <form action="/books" method="POST">
-            <label for="title">Title:<input type="text" name="title"></label><br>
-            <label for="author">Author:<input type="text" name="author"></label><br>
-            <label for="publishDate">Publish Date:<input type="date" name="publishDate"></label><br>
-            <label for="publisher">Publisher:<input type="text" name="publisher"></label><br>
-            <label for="pages">Pages:<input type="number" name="pages"></label><br>
-            <label for="language">Language:<input type="text" name="language"></label><br>
-            <label for="language">Book Image:<input type="text" name="bookImage"
-                    placeholder="paste the url"></label><br>
-            <label for="description">Description:<textarea name="description"></textarea></label><br>
 
-            <button type="submit">Submit</button>
-        </form>
-        <p>
-            <%= errorMsg %>
-        </p>
+    <div class="mainContainer">
+        <div class="formContainer">
+            <h1>New Book Information</h1>
+            <form action="/books" method="POST">
+                <div class="form-row ">
+                    <label for="title">Title:</label><input type="text" name="title">
+                </div>
+                <div class="form-row ">
+                    <label for="author">Author:</label><input type="text" name="author">
+                </div>
+                <div class="form-row ">
+                    <label for="publishDate">Publish Date:</label><input type="date" name="publishDate">
+                </div>
+                <div class="form-row ">
+                    <label for="publisher">Publisher:</label><input type="text" name="publisher">
+                </div>
+                <div class="form-row ">
+                    <label for="pages">Pages:</label><input type="number" name="pages">
+                </div>
+                <div class="form-row ">
+                    <label for="language">Language:</label><input type="text" name="language">
+                </div>
+                <div class="form-row ">
+                    <label for="language">Book Image:</label><input type="text" name="bookImage"
+                        placeholder="PASTE URL">
+                </div>
+                <div class="form-row ">
+                    <label for="description">Description:</label><textarea name="description"></textarea>
+                </div>
+
+                <button type="submit">Submit</button>
+            </form>
+            <p>
+                <%= errorMsg %>
+            </p>
+        </div>
     </div>
 
     <%- include('../partials/footer') %>

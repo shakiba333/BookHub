@@ -1,17 +1,28 @@
 <%- include('../partials/header') %>
-    <% if(results !="" ){ %>
-        <div>
+    <div class="mainContainer">
+        <% if(results !="" ){ %>
             <% results.forEach(result=> { %>
-                <h3>
-                    <%= result.title %>
-                </h3>
-                <h3>
-                    <%= result.author %>
-                </h3>
+                <div class="book-items">
+                    <div class="column">
+                        <img class="pic" src="<%= result.bookImage %>" alt="">
+                        <br>
+                        <p>
+                            <%= result.title %>
+                        </p>
+                        <p>by <%= result.author %>
+                        </p>
+                        <a href="/books/<%= result.id%>"> >> details</a>
+
+                    </div>
+
+                </div>
                 <% }); %>
                     <% } else { %>
+                        <br>
+                        <br>
+                        <br>
                         <h3>No Search results found!</h3>
                         <% } %>
-        </div>
+    </div>
 
-        <%- include('../partials/footer') %>
+    <%- include('../partials/footer') %>

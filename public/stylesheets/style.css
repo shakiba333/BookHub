@@ -1,10 +1,97 @@
 * {
   box-sizing: border-box;
   margin: 0;
-  text-align: center;
-  font-family: 'Special Elite', cursive;
   color: rgb(58, 55, 45);
   background-color: #F5F5F5;
+  text-align: center;
+
+}
+
+body {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: .1fr 3fr .1fr;
+}
+
+/* Navbar */
+nav {
+  grid-column: 1/4;
+  grid-row: 1/2;
+
+}
+
+nav ul {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  margin: 0 auto;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  list-style-type: none;
+  padding: 1vmin;
+}
+
+nav ul li {
+  margin: 0 5vmin;
+  font-size: auto;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(58, 55, 45);
+}
+
+nav a:hover {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* body */
+
+h1 {
+  margin: 2vmin;
+}
+
+input {
+  height: 40px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  height: 40px;
+  width: 80px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+textarea {
+  width: 600px;
+  height: 150px;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  resize: none;
+}
+
+.mainContainer {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-column: 2/3;
+  grid-row: 2/3;
 }
 
 .book-items {
@@ -19,53 +106,17 @@
 .pic {
   height: 30vmin;
   width: 20vmin;
-  border-radius: 10px;
-  box-shadow: -10px 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 0 10px 10px 0;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 
 }
 
-nav ul {
-  display: flex;
-  width: 100%;
-  height: 20vmin;
-  margin: 0 auto;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  list-style-type: none;
-  padding: 1vmin;
-}
-
-nav ul li {
-  margin: 0 5vmin;
-  font-size: 46px;
-}
-
-a {
-  text-decoration: none;
-  color: rgb(58, 55, 45);
-}
 
 .oneLine {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-}
-
-input {
-  height: 50px;
-  width: 280px;
-}
-
-button {
-  height: 50px;
-  width: 80px;
-}
-
-.oneLine a {
-  border: 2px solid #111;
-  padding: 15px 18px;
 }
 
 .oneLine .column {
@@ -75,49 +126,124 @@ button {
   align-items: center;
 }
 
-.container {
-  margin: 10vmin auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 
-.container * {
-  margin: 10px;
+.aside {
+  width: 75%;
+  padding: 6px;
+  margin-left: 16px;
+  text-align: left;
 
 }
 
-textarea {
-  width: 300px;
-  height: 150px;
-  padding: 10px;
-  font-family: Arial, sans-serif;
+.formContainer {
+  width: 600px;
+  height: 800px;
   font-size: 14px;
+  padding: 8px;
+  margin: 10vmin auto;
+}
+
+.form-row {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.formContainer input {
+  width: 100%;
+  height: 40px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease;
   border: 1px solid #ccc;
   border-radius: 5px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-  resize: none;
+
 }
 
-.login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 34px;
+label {
+  width: 100px;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-.login img {
-  height: 30px;
-}
 
+
+
+/* reviews and ratings */
 .review-user {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.review-user img {
   border-radius: 50%;
   height: 40px;
+}
+
+.reviews-container {
+  width: 100%;
+}
+
+.rating {
+  display: inline-block;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  font-size: 24px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.rating label:before {
+  content: '\2605';
+}
+
+.rating input:checked~label {
+  color: #ffcc00;
+}
+
+.rating label:hover,
+.rating label:hover~label {
+  color: #ffcc00;
+}
+
+.star {
+  font-size: 20px;
+}
+
+.star::before {
+  content: '\2605';
+}
+
+.star-yellow {
+  color: #ffcc00;
+}
+
+.star-gray {
+  color: gray;
+}
+
+
+
+/* footer */
+.footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  grid-column: 1/4;
+  grid-row: 3/4;
+  background-color: #f8f8f8;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer p {
+  margin: 0;
+}
+
+.footer a {
+  color: #333;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
 }

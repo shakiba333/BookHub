@@ -2,7 +2,6 @@ const Book = require('../models/book');
 module.exports = {
     create,
     delete: deleteReview
-    // edit
 };
 
 async function create(req, res) {
@@ -32,15 +31,3 @@ async function deleteReview(req, res) {
     // Redirect back to the movie's show view
     res.redirect(`/books/${deleteUserReview._id}`);
 }
-
-// async function edit(req, res) {
-//     try {
-//         const editUserReview = await Book.findById(req.params.id);
-//         res.render('books/edit', {
-//             editUserReview,
-//             errorMsg: ''
-//         })
-//     } catch (err) {
-//         res.render(`/books/edit`, { errorMsg: err.message });
-//     }
-// }

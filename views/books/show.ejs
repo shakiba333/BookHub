@@ -1,71 +1,112 @@
 <%- include('../partials/header') %>
-    <div class="container">
-        <img class="pic" src="<%=book.bookImage%>" alt="">
-        <h1>Title:</h1>
-        <%= book.title %>
-            <h2>Author:</h2>
-            <%= book.author %>
-                <h2>Summary:</h2>
+
+    <div class="mainContainer">
+        <br>
+        <br>
+        <div class="oneLine">
+            <div class="column">
+                <img class="pic" src="<%=book.bookImage%>" alt="">
+            </div>
+
+            <div class="aside">
+                <h1>
+                    <%= book.title %>
+                </h1>
+                <h4>by <%= book.author %>
+                </h4>
+                <br>
                 <%= book.description %>
-                    <h2>Publish Date:</h2>
-                    <%= book.publishDate %>
-                        <h2>Publisher:</h2>
+                    <br>
+                    <br>
+                    First Published:
+                    <%= book.publishDate.toLocaleDateString() %>
+                        <br>
+                        Publisher:
                         <%= book.publisher %>
-                            <h2>Pages:</h2>
-                            <%= book.pages %>
-                                <h2>Language:</h2>
+                            <br>
+                            <%= book.pages %> pages
+                                <br>
+                                Language:
                                 <%= book.language %>
-    </div>
-    <p>
-        <%= errorMsg %>
-    </p>
 
-    <div>
-        <h2>Reviews:</h2><br>
-        <% if (user) { %>
-            <form action="/books/<%= book.id %>/reviews" method="POST">
-                <textarea name="content" placeholder="your review"></textarea><br>
-                <label>Rating:</label>
-                <select name="rating">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select><br>
-                <button>Add Review</button>
-            </form>
-            <% } %>
-    </div>
+            </div>
+            <p>
+                <%= errorMsg %>
+            </p>
 
-    <% if(book.reviews.length){ %>
-        <% book.reviews.forEach(function(b){ %>
-            <h3>Review</h3>
-            <p class="review-user"><img alt="avatar" src="<%= b.userAvatar %>" referrerpolicy="no-referrer">
-                <%= b.userName %>
-            </p>
-            <p>
-                <%= b.content %>
-            </p><br>
-            <h3>Date</h3>
-            <p>
-                <%= b.createdAt.toLocaleDateString() %>
-            </p><br>
-            <h3>Rating</h3>
-            <p>
-                <%= b.rating %>
-            </p>
-            <p>
-                <% if (user?._id.equals(b.user)) { %>
-                    <form action="/reviews/<%= b._id %>?_method=DELETE" method="POST">
-                        <button type="submit">X</button>
-                    </form>
-                    <% } %>
-            </p>
-            <% }); %>
-                <% } else { %>
-                    <h5>No Reviews yet!</h5>
-                    <% } %>
-                        <div>
+        </div>
+
+
+        <div>
+            <br>
+            <br>
+            <hr>
+            <br>
+            <br>
+            <h2>Ratings & Reviews</h2><br>
+            <% if (user) { %>
+                <form action="/books/<%= book.id %>/reviews" method="POST">
+                    <textarea name="content" placeholder="your review"></textarea><br>
+                    <div class="oneLine">
+                        <div class="rating">
+                            <input type="radio" id="star5" name="rating" value="5">
+                            <label for="star5"></label>
+                            <input type="radio" id="star4" name="rating" value="4">
+                            <label for="star4"></label>
+                            <input type="radio" id="star3" name="rating" value="3">
+                            <label for="star3"></label>
+                            <input type="radio" id="star2" name="rating" value="2">
+                            <label for="star2"></label>
+                            <input type="radio" id="star1" name="rating" value="1">
+                            <label for="star1"></label>
+                        </div> &nbsp;
+                        <button>Add</button>
+                    </div>
+                </form>
+                <% } %>
+
+        </div>
+
+        <% if(book.reviews.length){ %>
+            <% book.reviews.forEach(function(b){ %>
+                <div class="reviews-container">
+                    <div class="oneLine">
+                        <div class="column">
+                            <img class="review-user" alt="avatar" src="<%= b.userAvatar %>"
+                                referrerpolicy="no-referrer">
+                            <%= b.userName %>
                         </div>
-                        <%- include('../partials/footer') %>
+                        <div class="aside">
+                            <hr>
+                            <br>
+                            <br>
+                            <%= b.createdAt.toLocaleDateString() %> <br>
+                                <%= b.content %> <br>
+                                    <% for (let i=1; i <=5; i++) { %>
+                                        <% if (i <=b.rating) { %>
+                                            <label class="star star-yellow"></label>
+                                            <% } else { %>
+                                                <label class="star star-gray"></label>
+                                                <% } %>
+                                                    <% } %>
+                                                        <br> <br>
+                        </div>
+                        <% if (user?._id.equals(b.user)) { %>
+                            <form action="/reviews/<%= b._id %>?_method=DELETE" method="POST">
+                                <button type="submit">X</button>
+                            </form>
+                            <% } %>
+                    </div>
+                </div>
+                <% }); %>
+                    <% } else { %>
+                        <br>
+                        <br>
+                        <br>
+                        <h5>No Reviews yet!</h5>
+                        <% } %>
+                            <div>
+                            </div>
+
+    </div>
+    <%- include('../partials/footer') %>
